@@ -1,5 +1,5 @@
 /**
- * Esta clase contiene los atributos y metodos de escalaVector, es decir, la versión secuencial
+ * Esta clase contiene los atributos y metodos de escalaVPar, es decir, la versión paralelizada
  * @author Victor Moreno Sola
  * @version 1.0-PCTR
  * @see Runnable
@@ -15,6 +15,14 @@ public class escalaVPar implements Runnable
     private int ini;
     private int fin;
     static double[] vec;
+
+    /**
+     * Constructor parametrizado de la clase escalaVPar
+     * @param N Entero que funciona como tamaño del vector
+     * @param escalar Entero que funciona como escalar por el que multiplicar los elementos del vector
+     * @param orden Entero que sirve para designar las diferentes divisiones del vector
+     * @param vec Vector sobre el que se realizarán los diferentes cálculos
+     */
 
     escalaVPar(int N, int escalar, int orden, double vec[])
     {
@@ -37,7 +45,7 @@ public class escalaVPar implements Runnable
                 break;
             
             case 2:
-                this.ini = particion * 2;
+                this.ini = (particion * 2);
                 this.fin = this.ini + (particion * 2);
                 break;
             
@@ -77,17 +85,28 @@ public class escalaVPar implements Runnable
 
     }
 
+    /**
+     * Función que rellena el vector con elementos aleatorios 
+     * @param vec Vector a rellenar
+     */
     public void rellena()
     {
         for (i = ini; i < fin; i++) {vec[i] = Math.random();};
     }
 
-
+    /**
+     * Función que calcula el escalar del vector
+     * @param vec Vector a escalar
+     */
     public void escala()
     {
-        for (i = ini; i < fin; i++) {vec[i] = vec[i] * escalar; System.out.println(vec[i--]);};
+        for (i = ini; i < fin; i++) {vec[i] = vec[i] * escalar;};
     }
 
+    /**
+     * Función principal de la clase en la que se llama a rellena() y escala().
+     * @param vec Vector a llenar y escalar
+     */
     public void run()
     {
         rellena();

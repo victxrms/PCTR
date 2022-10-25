@@ -10,6 +10,11 @@ public class tablaCPU
     int N;
     static private double[] vec;
 
+    /**
+     * Main de la clase tablaCPU en la que se llamarán a las diferentes clases y sus respectivos métodos
+     * @param args Parámetros con los que llamarán a las diferentes clases, con los respectivos valores de la magnitud del vector y el escalar siguiendo la siguiente regla: tipoFuncion [(0) Secuencial (1) Paralelismo] || [La magnitud del vector] || [El escalar]
+     * @throws Exception
+     */
     public static void main(String[] args)
     throws Exception
     {
