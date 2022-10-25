@@ -29,6 +29,7 @@ public class escalaVPar implements Runnable
         this.N = N;
         this.escalar = escalar;
         this.orden = orden;
+        this.vec = vec;
 
         int particion = N/8;
 
@@ -46,37 +47,32 @@ public class escalaVPar implements Runnable
             
             case 2:
                 this.ini = (particion * 2);
-                this.fin = this.ini + (particion * 2);
+                this.fin = this.ini + particion;
                 break;
             
             case 3:
                 this.ini = (particion * 3);
-                this.fin = this.ini + this.ini + (particion * 3);
+                this.fin = this.ini + particion;
                 break;
             
             case 4:
                 this.ini = (particion * 4);
-                this.fin = this.ini + this.ini + (particion * 4);
+                this.fin = this.ini + particion;
                 break;
 
             case 5:
                 this.ini = (particion * 5);
-                this.fin = this.ini + (particion * 5);
+                this.fin = this.ini + particion;
                 break;
             
             case 6:
                 this.ini = (particion * 6);
-                this.fin = this.ini + (particion * 6);
+                this.fin = this.ini + particion;
                 break;
             
             case 7:
                 this.ini = (particion * 7);
-                this.fin = this.ini + (particion * 7);
-                break;
-            
-            case 8:
-                this.ini = (particion * 8);
-                this.fin = this.ini + this.ini + (particion * 8);
+                this.fin = this.ini + particion;
                 break;
 
             default:
@@ -111,7 +107,7 @@ public class escalaVPar implements Runnable
     {
         rellena();
         escala();
-        System.out.println("Vector escalado.");
+        System.out.println("Partición escalada.");
     }
 
 
