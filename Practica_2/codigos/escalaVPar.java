@@ -111,6 +111,7 @@ public class escalaVPar implements Runnable
     {
         rellena();
         escala();
+        System.out.println("Vector escalado.");
     }
 
 

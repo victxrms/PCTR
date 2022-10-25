@@ -40,7 +40,7 @@ public class escalaVector
      */
     public void escala(double vec[])
     {
-        for (i = 0; i < vec.length; i++) {vec[i] = vec[i] * escalar; System.out.println(vec[i--]);};
+        for (i = 0; i < vec.length; i++) {vec[i] = vec[i] * escalar;};
     }
 
     /**
@@ -51,6 +51,7 @@ public class escalaVector
     {
         rellena(vec);
         escala(vec);
+        System.out.println("Vector escalado.");
     }
 
 
