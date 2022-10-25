@@ -8,21 +8,28 @@
 public class cajero implements Runnable 
 {
     private int tipo;
+    static private cuentaCorriente cCorriente;
 
-    public cajero (int constTipo)
+    /**
+     * Constructor parametrizado de la clase cajero
+     * @param constTipo Entero que decidirá si el cajero realiza un depósito o un reintegro
+     * @param constCCorriente Objeto de la clase cCorriente que establece el atributo cCorriente de la clase
+     */
+    public cajero (int constTipo, cuentaCorriente constCCorriente)
     {
         this.tipo = constTipo;
+        this.cCorriente = constCCorriente;
     }
 
     public void run()
     {
         switch (tipo) {
             case 0:
-                cCorr.deposito(100);
+                cCorriente.deposito(100);
                 break;
         
             case 1:
-                cCorr.reintegro(100);
+                cCorriente.reintegro(100);
                 break;    
             default:
                 break;

@@ -43,4 +43,9 @@ public class cuentaCorriente
             this.saldo -= cantidad;
         }
     }
+
+    public void mSaldo ()
+    {
+        System.out.println("El saldo de la cuenta es " + this.saldo);
+    }
 }
