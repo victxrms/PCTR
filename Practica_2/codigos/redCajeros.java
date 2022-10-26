@@ -7,6 +7,12 @@
 
 public class redCajeros 
 {
+
+    /**
+     * Main que crea y ejecuta los diferentes hilos que se encargan de sustraer y depositar una cantidad, mostrando por pantalla al final el saldo de la cuenta
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) 
         throws Exception
     {
