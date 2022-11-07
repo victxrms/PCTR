@@ -35,11 +35,14 @@ public class algPeterson extends Thread
                 {
                     wantp = true;
                     last = 1;
-                    while (!wantq || last == 2);
-                    critico +=100;  //seccion critica
-                    System.out.println(getName());
-                    System.out.println(critico);
-                    wantp = false;
+                    while (!wantq || last == 2)
+                    {
+                        critico +=100;  //seccion critica
+                        System.out.println(getName());
+                        System.out.println(critico);
+                        wantp = false;
+                    }
+                    
                 }
 
 
@@ -49,11 +52,13 @@ public class algPeterson extends Thread
                 {
                     wantq = true;
                     last = 2;
-                    while (!wantp || last == 1);
-                    critico -=100;  //seccion critica
-                    System.out.println(getName());
-                    System.out.println(critico);
-                    wantq = false;
+                    while (!wantp || last == 1)
+                    {
+                        critico -=100;  //seccion critica
+                        System.out.println(getName());
+                        System.out.println(critico);
+                        wantq = false;
+                    }
                 }
 
             default:
@@ -69,8 +74,8 @@ public class algPeterson extends Thread
     public static void main(String[] args) 
         throws Exception
     {
-        Thread h1 = new tryThree(0);
-        Thread h2 = new tryThree(1);
+        Thread h1 = new algPeterson(0);
+        Thread h2 = new algPeterson(1);
 
         h1.start(); h2.start();
         h1.join(); h2.join();

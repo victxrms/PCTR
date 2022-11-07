@@ -11,7 +11,7 @@ public class tryFour extends Thread
     static private int idHebra;
     static private volatile boolean wantp = false;
     static private volatile boolean wantq = false;
-    static public volatile int critico = 0; 
+    static public int critico = 0; 
 
     /**
      * Constructor parametrizado de la clase tryFour
@@ -34,9 +34,12 @@ public class tryFour extends Thread
                 while (true)
                 {
                     wantp = true;
-                    while (wantq);
-                    wantp = false;
-                    wantp = true;
+                    while (wantq)
+                    {
+                        wantp = false;
+                        wantp = true;
+                    }
+                    
                     critico +=100;  //seccion critica
                     System.out.println(getName());
                     System.out.println(critico);
@@ -49,9 +52,12 @@ public class tryFour extends Thread
                 while (true)
                 {
                     wantq = true;
-                    while (wantq);
-                    wantq = false;
-                    wantq = true;
+                    while (wantp)
+                    {
+                        wantq = false;
+                        wantq = true;
+                    }
+                    
                     critico -=100;  //seccion critica
                     System.out.println(getName());
                     System.out.println(critico);
@@ -71,11 +77,11 @@ public class tryFour extends Thread
     public static void main(String[] args) 
         throws Exception
     {
-        Thread h1 = new tryThree(0);
-        Thread h2 = new tryThree(1);
+        Thread h1 = new tryFour(0);
+        Thread h2 = new tryFour(1);
 
         h1.start(); h2.start();
-        h1.join(); h2.join();
+
 
         System.out.println(critico);
     }

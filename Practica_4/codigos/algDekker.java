@@ -35,13 +35,16 @@ public class algDekker extends Thread
                 while (true)
                 {
                     wantp = true;
-                    while (wantq);
+                    while (wantq)
+                    {
                         if (turn == 2)
                         {
                             wantp = false;
                             while (turn != 1);
                             wantp = true;
                         }
+                    }
+                        
                     critico +=100;  //seccion critica
                     System.out.println(getName());
                     System.out.println(critico);
@@ -55,13 +58,16 @@ public class algDekker extends Thread
                 while (true)
                 {
                     wantq = true;
-                    while (wantp);
+                    while (wantp)
+                    {
                         if (turn == 1)
                         {
                             wantq = false;
                             while (turn != 2);
                             wantq = true;
                         }
+                    }
+                        
                     critico -=100;  //seccion critica
                     System.out.println(getName());
                     System.out.println(critico);
@@ -82,8 +88,8 @@ public class algDekker extends Thread
     public static void main(String[] args) 
         throws Exception
     {
-        Thread h1 = new tryThree(0);
-        Thread h2 = new tryThree(1);
+        Thread h1 = new algDekker(0);
+        Thread h2 = new algDekker(1);
 
         h1.start(); h2.start();
         h1.join(); h2.join();
