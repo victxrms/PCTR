@@ -2,12 +2,14 @@
  * Esta clase contiene los atributos y metodos para ejecutar el algoritmo de Peterson
  * @author Victor Moreno Sola
  * @version 1.0-PCTR
- * @see java.lang.Thread
+ * @see java.lang.Runnable, java.util.concurrent
  */
 
-public class algPeterson extends Thread
+import java.util.concurrent.*;
+
+public class algPeterson implements Runnable
 {
-    static private int idHebra;
+    private int idHebra;
     static private volatile boolean wantp = false;
     static private volatile boolean wantq = false;
     static private volatile int last = 1;
@@ -38,7 +40,7 @@ public class algPeterson extends Thread
                     while (!wantq || last == 2)
                     {
                         critico +=100;  //seccion critica
-                        System.out.println(getName());
+                        System.out.println(Thread.currentThread().getName());
                         System.out.println(critico);
                         wantp = false;
                     }
@@ -55,7 +57,7 @@ public class algPeterson extends Thread
                     while (!wantp || last == 1)
                     {
                         critico -=100;  //seccion critica
-                        System.out.println(getName());
+                        System.out.println(Thread.currentThread().getName());
                         System.out.println(critico);
                         wantq = false;
                     }
@@ -74,13 +76,12 @@ public class algPeterson extends Thread
     public static void main(String[] args) 
         throws Exception
     {
-        Thread h1 = new algPeterson(0);
-        Thread h2 = new algPeterson(1);
 
-        h1.start(); h2.start();
-        h1.join(); h2.join();
+        ExecutorService poolThreads = Executors.newFixedThreadPool(2);
+        poolThreads.execute(new algPeterson(0));
+        poolThreads.execute(new algPeterson(1));
+        poolThreads.shutdown();
 
-        System.out.println(critico);
-    
+        while(!poolThreads.isTerminated());
     }
 }
