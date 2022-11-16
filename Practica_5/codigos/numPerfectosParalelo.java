@@ -10,8 +10,8 @@ import java.util.concurrent.*;
 
  public class numPerfectosParalelo implements Callable<Integer>
  {
-    private static int ini;
-    private static int fin;
+    private int ini;
+    private int fin;
 
     /**
      * Constructor parametrizado de la clase numPerfectosParalelo
@@ -31,16 +31,21 @@ import java.util.concurrent.*;
         for (int i=ini; i<=fin; i++)
         {
             int sumadivisores = 0;
-            for (int divisor=1; divisor<i/2; divisor++)
+            
+            for (int divisor=1; divisor<=i; divisor++)
             {
-                if(i%divisor==0)
+                
+                if(i%divisor==0 && i!=divisor)
                 {
                     sumadivisores+= divisor;
                 }   
             }
 
             if (sumadivisores == i)
-            cantidad++;
+            {
+                cantidad++;
+            }
+            
         }
 
         return cantidad;
@@ -62,6 +67,10 @@ import java.util.concurrent.*;
         int finalo = Integer.valueOf(args[1]);
         int N = Integer.valueOf(args[2]);
 
+        int i = 0;
+
+        int particion = (finalo-inicio)/N;
+
         Date d = new Date();
         
         long inicCronom = System.currentTimeMillis(); //se prepara el cronometro
@@ -70,16 +79,14 @@ import java.util.concurrent.*;
         ExecutorService sPools = Executors.newFixedThreadPool(N);
         List<Future<Integer>> lFutures = new ArrayList<Future<Integer>>();
 
-        int particion = (finalo-inicio)/N;
+        
 
-        for (int i=1; i<(particion - 1); i++)
+        for (i=1; i<(particion - 1); i++)
         {
-            System.out.println(i);
-            lFutures.add(sPools.submit(new numPerfectosParalelo(inicio + (particion * i), inicio + particion * (i+1))));
-
+            lFutures.add(sPools.submit(new numPerfectosParalelo((inicio + (particion * i)), (inicio + (particion * (i+1))))));
         }
         
-        lFutures.add(sPools.submit(new numPerfectosParalelo(inicio + (N -1 * particion), fin)));
+        lFutures.add(sPools.submit(new numPerfectosParalelo((inicio + (i * particion)), finalo)));
 
         for (int j = 0; j < lFutures.size(); j++)
         {
