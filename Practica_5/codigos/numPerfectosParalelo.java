@@ -24,6 +24,9 @@ import java.util.concurrent.*;
         this.fin = fin;
     }
 
+    /**
+     * Función que ejecuta el cuerpo de los diferentes Callables
+     */
     public Integer call()
     {
         Integer cantidad = 0;
