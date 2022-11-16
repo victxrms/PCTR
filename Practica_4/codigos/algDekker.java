@@ -5,10 +5,9 @@
  * @see java.lang.Thread
  */
 
-
 public class algDekker extends Thread
 {
-    static private int idHebra;
+    private int idHebra;
     static private volatile boolean wantp = false;
     static private volatile boolean wantq = false;
     static private volatile int turn = 1;
