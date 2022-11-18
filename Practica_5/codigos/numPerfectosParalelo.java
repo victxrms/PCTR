@@ -35,7 +35,7 @@ import java.util.concurrent.*;
         {
             int sumadivisores = 0;
             
-            for (int divisor=1; divisor<=i; divisor++)
+            for (int divisor=1; divisor<=i/2; divisor++)
             {
                 
                 if(i%divisor==0 && i!=divisor)
@@ -84,7 +84,7 @@ import java.util.concurrent.*;
 
         
 
-        for (i=1; i<(particion - 1); i++)
+        for (i=0; i<(N - 1); i++)
         {
             lFutures.add(sPools.submit(new numPerfectosParalelo((inicio + (particion * i)), (inicio + (particion * (i+1))))));
         }
