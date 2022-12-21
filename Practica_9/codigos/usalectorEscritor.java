@@ -2,7 +2,6 @@
  * Esta clase contiene los atributos y metodos para implementar varias hebras lectoras y escritoras
  * @author Victor Moreno Sola
  * @version 1.0-PCTR
- * @see java.lang.Thread, recurso.java, lectorEscritor.java
 */
 public class usalectorEscritor extends Thread
 {
@@ -54,12 +53,11 @@ public class usalectorEscritor extends Thread
                 break;
         }
    }
-
-   /**
-    * Método principal que creará los objetos Recurso y lectorEscritor que usarán las diferentes hebras usalectorEscritor para funcionar
-    * @param args Este parametro no se emplea
-    * @throws Exception
-    */
+/**
+ * Método principal que crea los objetos recurso y lector escritor para hacer las diferentes llamadas a las hebras.
+ * @param args
+ * @throws Exception
+ */
  public static void main(String[] args) 
  throws Exception
  {

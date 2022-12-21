@@ -1,5 +1,5 @@
 /**
- * Esta clase contiene los atributos y metodos para implementar un lector
+ * Esta clase contiene los atributos y metodos para implementar los métodos de los objetos lectorEscritor
  * @author Victor Moreno Sola
  * @version 1.0-PCTR
 */
@@ -9,6 +9,9 @@ public class lectorEscritor
     private int lectores;
     private int esperando;
 
+    /**
+     * Constructor sin parámetros que establece los valores de los diferentes objetos de la clase lectorEscritor
+     */
     public lectorEscritor()
     {
         lectores = 0;
