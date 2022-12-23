@@ -1,12 +1,12 @@
-import java.rmi.Naming;
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
-
 /**
- * Esta clase contiene los atributos y metodos para implementar el servidor de la bono loto
+ * Esta clase contiene los atributos y metodos para implementar el servidor del calculo de pi a través del método montecarlo
  * @author Victor Moreno Sola
  * @version 1.0-PCTR
 */
+
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
 public class sPiMonteCarlo extends UnicastRemoteObject implements iPiMonteCarlo
 {

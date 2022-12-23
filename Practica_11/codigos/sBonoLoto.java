@@ -17,7 +17,7 @@ public class sBonoLoto extends UnicastRemoteObject implements iBonoLoto
      * Constructor no parametrizado que inicializa el array.
      * @throws RemoteException
      */
-    public sBonoLoto() throws RemoteException {resetServidor();}
+    sBonoLoto() throws RemoteException {resetServidor();}
 
     /**
      * Metodo compApuesta heredado de la interfaz 
@@ -25,28 +25,27 @@ public class sBonoLoto extends UnicastRemoteObject implements iBonoLoto
      */
     public boolean compApuesta(int[] apuesta) throws RemoteException 
     {
-        int i, j;
         boolean estaBien = true;
 
         System.out.println("Los números correctos son: ");
 
-        for (j = 0; j < 6; j++)
+        for (int i = 0; i < 6; i++)
         {
-            System.out.print(arrayLoteria[j] + " " );
+            System.out.print(arrayLoteria[i] + " " );
         }
 
         System.out.println("\nTu apuesta es: ");
 
-        for (j = 0; j < 6; j++)
+        for (int i = 0; i < 6; i++)
         {
-            System.out.print(apuesta[j] + " " );
+            System.out.print(apuesta[i] + " " );
         }
 
         System.out.println("\n");
 
-        for (i = 0; i < 6 && estaBien; i++);
+        for (int i = 0; i < 6 && estaBien; i++)
         {
-            if (apuesta[i] != arrayLoteria[i])
+            if (arrayLoteria[i] != apuesta[i])
             {
                 estaBien = false;
             }
@@ -80,8 +79,7 @@ public class sBonoLoto extends UnicastRemoteObject implements iBonoLoto
     public static void main(String[] args) 
         throws Exception
     {
-        iBonoLoto objRemoto = new sBonoLoto();
-
+        sBonoLoto objRemoto = new sBonoLoto();
         Naming.rebind("Servidor", objRemoto);
         System.out.println("Servidor remoto preparado");
     }   

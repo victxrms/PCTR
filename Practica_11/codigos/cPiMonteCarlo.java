@@ -1,14 +1,15 @@
 /**
- * Esta clase contiene los atributos y metodos para implementar el servidor de la bono loto
+ * Esta clase contiene los atributos y metodos para implementar el cliente del calculo de pi a través del método montecarlo
  * @author Victor Moreno Sola
  * @version 1.0-PCTR
 */
 
 import java.rmi.Naming;
 
-public class cPiMonteCarlo throws Exception
+public class cPiMonteCarlo 
 {
     public static void main(String[] args) 
+        throws Exception
     {
         iPiMonteCarlo refObjRemoto = (iPiMonteCarlo) Naming.lookup("//localhost/Servidor");
         
@@ -21,5 +22,4 @@ public class cPiMonteCarlo throws Exception
 
         System.out.println("El valor aproximado de Pi es: " + aproxPi + "\n");
     }
-    
 }
