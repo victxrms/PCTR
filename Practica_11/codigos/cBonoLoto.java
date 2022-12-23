@@ -38,7 +38,5 @@ public class cBonoLoto
         }
 
         refObjRemoto.resetServidor();
-
-
     }
 }
