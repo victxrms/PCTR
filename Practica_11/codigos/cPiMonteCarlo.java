@@ -21,5 +21,6 @@ public class cPiMonteCarlo
         aproxPi = refObjRemoto.aproxActual();
 
         System.out.println("El valor aproximado de Pi es: " + aproxPi + "\n");
+        System.out.println("Si deseas reiniciar el servidor introduce 0 cuando llames al ejecutable.\n");
     }
 }

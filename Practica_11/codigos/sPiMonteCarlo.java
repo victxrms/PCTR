@@ -17,10 +17,15 @@ public class sPiMonteCarlo extends UnicastRemoteObject implements iPiMonteCarlo
     public sPiMonteCarlo() throws RemoteException {}
     public void masPuntos(int nPuntos)  throws RemoteException
     {
+        if (nPuntos == 0)
+            reset();
         nVueltas += nPuntos;
+        System.out.println(nVueltas);
     }
     public double aproxActual() throws RemoteException
     {
+        intentos = 0;
+
         for(long i=0; i<nVueltas; i++)
         {
             cX = Math.random();
@@ -36,6 +41,7 @@ public class sPiMonteCarlo extends UnicastRemoteObject implements iPiMonteCarlo
     {
         intentos = 0;
         nVueltas = 0;
+        System.out.println("Servidor reiniciado correctamente. \n");
     }
 
     public static void main(String[] args) 
