@@ -14,7 +14,16 @@ public class sPiMonteCarlo extends UnicastRemoteObject implements iPiMonteCarlo
     private int intentos = 0;
     private int nVueltas = 1;
 
+    /**
+     * Constructor vacio para poder lanzar la excepecion RemoteException
+     * @throws RemoteException
+     */
     public sPiMonteCarlo() throws RemoteException {}
+
+    /**
+     * Método que suma al número de puntos del objeto los que recibe como parámetro.
+     * @param nPuntos Entero que determina el número de puntos a sumar.
+     */
     public void masPuntos(int nPuntos)  throws RemoteException
     {
         if (nPuntos == 0)
@@ -22,6 +31,11 @@ public class sPiMonteCarlo extends UnicastRemoteObject implements iPiMonteCarlo
         nVueltas += nPuntos;
         System.out.println(nVueltas);
     }
+
+    /**
+     * Método que calcula la aproximación de pi y la devuelve
+     * @return Variable de tipo doble con el cálculo de la aproximación de pi.
+     */
     public double aproxActual() throws RemoteException
     {
         intentos = 0;
@@ -37,6 +51,9 @@ public class sPiMonteCarlo extends UnicastRemoteObject implements iPiMonteCarlo
         return (4.0*intentos/nVueltas);
     }
 
+    /**
+     * Reinicia el servidor estableciendo los intentos y el número de vueltas a 0.
+     */
     public void reset()
     {
         intentos = 0;
@@ -44,6 +61,11 @@ public class sPiMonteCarlo extends UnicastRemoteObject implements iPiMonteCarlo
         System.out.println("Servidor reiniciado correctamente. \n");
     }
 
+    /**
+     * Método principal que inicializa los objetos y monta el servidor.
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) 
         throws Exception
     {

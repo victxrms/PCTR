@@ -14,14 +14,15 @@ public class sBonoLoto extends UnicastRemoteObject implements iBonoLoto
     private int[] arrayLoteria= new int[6];
 
     /**
-     * Constructor no parametrizado que inicializa el array.
+     * Constructor no parametrizado que inicializa el array a través de una llamada al método resetServidor.
      * @throws RemoteException
      */
     sBonoLoto() throws RemoteException {resetServidor();}
 
     /**
-     * Metodo compApuesta heredado de la interfaz 
+     * Metodo compApuesta heredado de la interfaz que comprueba la corrección de los datos recibidos por el cliente 
      * @throws RemoteException
+     * @return Variable que será verdadera si el array recibido es correcto.
      */
     public boolean compApuesta(int[] apuesta) throws RemoteException 
     {
@@ -55,7 +56,8 @@ public class sBonoLoto extends UnicastRemoteObject implements iBonoLoto
     }
 
     /**
-     * Método resetServidor heredado de la interfaz
+     * Método resetServidor heredado de la interfaz que reinicia el servidor modificando los valores del array o inicializandolos
+     * si fuera la primera vez que se ejecuta.
      * @throws RemoteException
      */
     public void resetServidor() throws RemoteException 
@@ -79,7 +81,7 @@ public class sBonoLoto extends UnicastRemoteObject implements iBonoLoto
     public static void main(String[] args) 
         throws Exception
     {
-        sBonoLoto objRemoto = new sBonoLoto();
+        iBonoLoto objRemoto = new sBonoLoto();
         Naming.rebind("Servidor", objRemoto);
         System.out.println("Servidor remoto preparado");
     }   

@@ -6,6 +6,10 @@
 
 import java.rmi.Naming;
 
+/**
+ * Método principal de la clase cPiMonteCarlo en la que crea la referencia al objeto remoto y hace las diferentes llamadas a los métodos del mismo.
+ * @param args Variable que determinará el número de vueltas que enviaremos con la llamada al métodos masPuntos.
+ */
 public class cPiMonteCarlo 
 {
     public static void main(String[] args) 
