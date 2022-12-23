@@ -66,8 +66,8 @@ public class sBonoLoto extends UnicastRemoteObject implements iBonoLoto
 
         for (i = 0; i < 6; i++)
         {   
-            //arrayLoteria[i] = r.nextInt(49-1) + 1; 
-            arrayLoteria[i] = i; //version de prueba
+            arrayLoteria[i] = r.nextInt(49-1) + 1; 
+            //arrayLoteria[i] = i; //version de prueba
         }
     }
 
