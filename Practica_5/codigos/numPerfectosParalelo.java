@@ -82,17 +82,14 @@ import java.util.concurrent.*;
         ExecutorService sPools = Executors.newFixedThreadPool(N);
         List<Future<Integer>> lFutures = new ArrayList<Future<Integer>>();
 
-        
-
-        for (i=0; i<(N - 1); i++)
-        {
-            lFutures.add(sPools.submit(new numPerfectosParalelo((inicio + (particion * i)), (inicio + (particion * (i+1))))));
+        for (i = 0; i < (N - 1); i++) {
+            lFutures.add(sPools
+                    .submit(new numPerfectosParalelo((inicio + (particion * i)), (inicio + (particion * (i + 1))))));
         }
-        
+
         lFutures.add(sPools.submit(new numPerfectosParalelo((inicio + (i * particion)), finalo)));
 
-        for (int j = 0; j < lFutures.size(); j++)
-        {
+        for (int j = 0; j < lFutures.size(); j++) {
             contador += lFutures.get(j).get();
         }
         
